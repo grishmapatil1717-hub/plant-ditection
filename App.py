@@ -12,6 +12,63 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 import time
+import io
+from fpdf import FPDF
+
+
+def generate_pdf_report(image: Image.Image, label, confidence, top3, info, severity_result):
+    """Builds a simple one-page PDF summarizing the prediction."""
+    img_buffer = io.BytesIO()
+    image.save(img_buffer, format="JPEG")
+    img_buffer.seek(0)
+
+    pdf = FPDF()
+    pdf.add_page()
+
+    pdf.set_font("Helvetica", "B", 16)
+    pdf.cell(0, 10, "Plant Disease Prediction Report", ln=True)
+    pdf.set_font("Helvetica", "", 10)
+    pdf.cell(0, 8, f"Generated: {time.strftime('%Y-%m-%d %H:%M')}", ln=True)
+    pdf.ln(4)
+
+    # Save image to a temp file since fpdf reads image paths, not buffers directly
+    temp_img_path = "temp_report_image.jpg"
+    image.save(temp_img_path, format="JPEG")
+    pdf.image(temp_img_path, w=80)
+    pdf.ln(4)
+
+    pdf.set_font("Helvetica", "B", 13)
+    pdf.cell(0, 8, f"Result: {label} ({confidence*100:.1f}% confidence)", ln=True)
+    pdf.ln(2)
+
+    pdf.set_font("Helvetica", "B", 11)
+    pdf.cell(0, 7, "Top Predictions:", ln=True)
+    pdf.set_font("Helvetica", "", 10)
+    for cls, prob in top3:
+        pdf.cell(0, 6, f"  {cls}: {prob*100:.1f}%", ln=True)
+    pdf.ln(2)
+
+    if info:
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(0, 7, "About this result:", ln=True)
+        pdf.set_font("Helvetica", "", 10)
+        pdf.multi_cell(0, 6, info["description"])
+        pdf.ln(1)
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(0, 7, "Suggested action:", ln=True)
+        pdf.set_font("Helvetica", "", 10)
+        pdf.multi_cell(0, 6, info["remedy"])
+        pdf.ln(1)
+
+    if severity_result:
+        severity_label, coverage = severity_result
+        pdf.set_font("Helvetica", "B", 11)
+        pdf.cell(0, 7, f"Estimated severity: {severity_label} (~{coverage*100:.0f}% lesion coverage)", ln=True)
+        pdf.set_font("Helvetica", "I", 9)
+        pdf.multi_cell(0, 5, "Rough estimate based on leaf discoloration, not a trained severity model.")
+
+    return bytes(pdf.output(dest="S"))
+
 
 # ------------------------------------------------------------------
 # PAGE CONFIG
@@ -140,6 +197,41 @@ DISEASE_INFO = {
 }
 
 
+def estimate_severity(image: Image.Image, label: str):
+    """
+    Rough, non-ML severity estimate based on lesion color coverage.
+    NOT a substitute for a trained severity model — this approximates
+    how much of the leaf shows brown/dark discoloration, which loosely
+    correlates with infection extent for blight-type diseases.
+    Only meaningful when a disease was actually detected.
+    """
+    if label == "Healthy":
+        return None  # no severity to estimate
+
+    img_array = np.array(image.resize((224, 224)), dtype=np.float32) / 255.0
+    r, g, b = img_array[:, :, 0], img_array[:, :, 1], img_array[:, :, 2]
+
+    # Leaf mask: greenish pixels (rough threshold, not perfect)
+    leaf_mask = (g > r) & (g > b * 0.8)
+
+    # Lesion mask: brown/dark spots (low green relative to red, or generally dark)
+    lesion_mask = ((r > g) | (r + g + b < 0.6)) & leaf_mask
+
+    leaf_pixels = np.sum(leaf_mask)
+    lesion_pixels = np.sum(lesion_mask)
+
+    if leaf_pixels == 0:
+        return None
+
+    coverage = lesion_pixels / leaf_pixels
+
+    if coverage < 0.15:
+        return "Mild", coverage
+    elif coverage < 0.35:
+        return "Moderate", coverage
+    else:
+        return "Severe", coverage
+
 def predict(image: Image.Image, model):
     """Real inference matching the training preprocessing (RGB, 224x224, /255.0)."""
     image_resized = image.resize(IMG_SIZE)
@@ -169,6 +261,21 @@ if uploaded_file is not None:
     if st.button("🔍 Predict"):
         with st.spinner("Analyzing leaf..."):
             label, confidence, top3 = predict(image, model)
+        severity_result = estimate_severity(image, label)
+        # Store everything needed to redraw results + build the PDF,
+        # so it survives the rerun triggered by the download button.
+        st.session_state["result"] = {
+            "label": label,
+            "confidence": confidence,
+            "top3": top3,
+            "severity_result": severity_result,
+        }
+
+    if "result" in st.session_state:
+        r = st.session_state["result"]
+        label, confidence, top3, severity_result = (
+            r["label"], r["confidence"], r["top3"], r["severity_result"]
+        )
 
         st.markdown('<div class="result-card">', unsafe_allow_html=True)
         if label.lower() == "healthy":
@@ -186,6 +293,19 @@ if uploaded_file is not None:
             st.markdown("---")
             st.markdown(f"**About this result:** {info['description']}")
             st.markdown(f"**Suggested action:** {info['remedy']}")
+
+        if severity_result:
+            severity_label, coverage = severity_result
+            st.markdown(f"**Estimated severity:** {severity_label} (~{coverage*100:.0f}% lesion coverage)")
+            st.caption("⚠️ Rough estimate based on leaf discoloration, not a trained severity model. Use as a general guide only.")
         st.markdown('</div>', unsafe_allow_html=True)
+
+        pdf_bytes = generate_pdf_report(image, label, confidence, top3, info, severity_result)
+        st.download_button(
+            "📄 Download PDF Report",
+            data=pdf_bytes,
+            file_name="plant_disease_report.pdf",
+            mime="application/pdf",
+        )
 else:
     st.info("👆 Upload an image to get started.")

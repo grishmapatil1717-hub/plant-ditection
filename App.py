@@ -124,6 +124,21 @@ def load_model():
 CLASS_NAMES = ["Healthy", "Early_Blight", "Late_Blight"]
 IMG_SIZE = (224, 224)
 
+DISEASE_INFO = {
+    "Healthy": {
+        "description": "No signs of disease detected on this leaf.",
+        "remedy": "Keep up good watering, sunlight, and airflow practices to maintain plant health.",
+    },
+    "Early_Blight": {
+        "description": "A fungal disease causing brown spots with concentric rings, usually starting on older leaves.",
+        "remedy": "Remove and dispose of affected leaves, avoid overhead watering, apply a copper-based fungicide, and rotate crops each season.",
+    },
+    "Late_Blight": {
+        "description": "A fast-spreading, aggressive fungal disease causing dark, water-soaked lesions that can destroy a plant within days.",
+        "remedy": "Remove and destroy infected plants immediately to stop spread, apply an appropriate fungicide, and improve air circulation around plants.",
+    },
+}
+
 
 def predict(image: Image.Image, model):
     """Real inference matching the training preprocessing (RGB, 224x224, /255.0)."""
@@ -165,6 +180,12 @@ if uploaded_file is not None:
         for cls, prob in top3:
             st.write(f"{cls}: {prob*100:.1f}%")
             st.progress(float(prob))
+
+        info = DISEASE_INFO.get(label)
+        if info:
+            st.markdown("---")
+            st.markdown(f"**About this result:** {info['description']}")
+            st.markdown(f"**Suggested action:** {info['remedy']}")
         st.markdown('</div>', unsafe_allow_html=True)
 else:
     st.info("👆 Upload an image to get started.")

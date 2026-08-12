@@ -89,7 +89,7 @@ import os
 # Get it from a Drive share link like:
 #   https://drive.google.com/file/d/FILE_ID_HERE/view?usp=sharing
 GDRIVE_FILE_ID = "1uPPXXC90noUpibecudBMiw9RPht9wpCP"
-LOCAL_MODEL_PATH = "plant_model.h5"  # change extension if using .pt etc.
+LOCAL_MODEL_PATH = "plant_model.keras"  # matches your Drive file's actual format
 
 
 def download_model_from_drive(file_id: str, output_path: str):

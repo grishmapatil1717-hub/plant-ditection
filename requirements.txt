@@ -3,3 +3,4 @@ pillow
 numpy
 tensorflow-cpu
 gdown
+fpdf2

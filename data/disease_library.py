@@ -303,6 +303,225 @@ DISEASE_KNOWLEDGE_BASE = {
                 "Maintain adequate boron and zinc micronutrient balance"
             ]
         }
+    },
+    "corn": {
+        "Cercospora Leaf Spot": {
+            "scientific_name": "Cercospora zeae-maydis",
+            "pathogen": "Fungus (Cercospora zeae-maydis)",
+            "severity": "Moderate",
+            "is_healthy": False,
+            "description": "Also known as Gray Leaf Spot, causing rectangular tan lesions running parallel to corn leaf veins, reducing photosynthetic capacity.",
+            "causes": "Warm humid conditions (25-30°C), dense plant canopy, continuous corn cropping without residue burial.",
+            "symptoms": [
+                "Small tan spots expanding into distinct rectangular lesions bounded by leaf veins",
+                "Grey fungal sporulation on leaf surface during damp morning hours",
+                "Extensive blighting of upper leaves leading to stalk lodging and reduced grain fill"
+            ],
+            "organic_remedies": [
+                "Rotate with non-host crops like soybeans or alfalfa for at least 1-2 years",
+                "Apply Bacillus subtilis bio-fungicide foliar sprays",
+                "Shred and till corn residue deep into the soil after harvest"
+            ],
+            "chemical_treatments": [
+                "Azoxystrobin + Difenoconazole @ 1ml/L of water",
+                "Pyraclostrobin (Headline AMP) or Propiconazole 25 EC (1ml/L)",
+                "Mancozeb 75 WP (2g/L) during early vegetative stages"
+            ],
+            "prevention": [
+                "Plant Gray Leaf Spot-tolerant corn hybrids",
+                "Adopt optimum plant density to enhance intra-row air circulation",
+                "Apply balanced nitrogen and potassium fertilization to prevent plant stress"
+            ]
+        },
+        "Common Rust": {
+            "scientific_name": "Puccinia sorghi",
+            "pathogen": "Fungus (Puccinia sorghi)",
+            "severity": "Moderate",
+            "is_healthy": False,
+            "description": "Airborne fungal rust producing powdery golden-brown to cinnamon pustules on both upper and lower corn leaf surfaces.",
+            "causes": "Cool to moderate temperatures (16-25°C) combined with high relative humidity (>95%) and night dews.",
+            "symptoms": [
+                "Oval to elongate cinnamon-brown powdery pustules scattered across leaves",
+                "Pustules rupturing the epidermis, turning brownish-black late in the season",
+                "Chlorosis and premature drying of severely infected leaves"
+            ],
+            "organic_remedies": [
+                "Apply sulfur-based dusts or wettable sulfur (3g/L) early at first pustule appearance",
+                "Neem seed kernel extract (NSKE 5%) spray every 10 days",
+                "Promote rapid canopy drying by avoiding evening sprinkler irrigation"
+            ],
+            "chemical_treatments": [
+                "Mancozeb 75 WP @ 2.5g/L or Zineb 75 WP @ 2g/L",
+                "Azoxystrobin 23 SC (1ml/L) or Tebuconazole 25.9 EC (1ml/L)",
+                "Propiconazole 25 EC (1ml/L) applied at tassel emergence if rust is severe"
+            ],
+            "prevention": [
+                "Select corn hybrids with specific Rp resistance genes",
+                "Plant early in the season to evade mid-summer spore influx",
+                "Ensure proper field drainage and balanced soil nutrition"
+            ]
+        },
+        "Northern Leaf Blight": {
+            "scientific_name": "Exserohilum turcicum",
+            "pathogen": "Fungus (Exserohilum turcicum)",
+            "severity": "Severe",
+            "is_healthy": False,
+            "description": "Devastating foliar disease producing large cigar-shaped grayish-green to tan lesions, leading to severe yield loss.",
+            "causes": "Moderate temperatures (18-27°C) with prolonged wet periods and heavy morning dews.",
+            "symptoms": [
+                "Long, elliptical, cigar-shaped grayish-green or tan lesions (2.5 to 15 cm long)",
+                "Dark olive-green fuzzy fungal spores developing within lesions in damp weather",
+                "Leaves turning entirely brown and dry, looking as if killed by early frost"
+            ],
+            "organic_remedies": [
+                "Clean cultivation and deep burying of infected crop debris",
+                "Crop rotation away from maize and sorghum for 2 seasons",
+                "Foliar spray with Trichoderma viride or Pseudomonas fluorescens"
+            ],
+            "chemical_treatments": [
+                "Mancozeb 75 WP @ 2.5g/L or Chlorothalonil 75 WP @ 2g/L",
+                "Azoxystrobin + Tebuconazole (1ml/L) or Pyraclostrobin",
+                "Difenoconazole 25 EC (0.5ml/L) at first sign of lower leaf lesions"
+            ],
+            "prevention": [
+                "Utilize corn hybrids carrying Ht resistance genes",
+                "Avoid overhead irrigation during cooler vegetative stages",
+                "Maintain optimal plant spacing for good canopy airflow"
+            ]
+        },
+        "Healthy": {
+            "scientific_name": "Zea mays (Healthy)",
+            "pathogen": "None (Optimal Health)",
+            "severity": "None",
+            "is_healthy": True,
+            "description": "Vibrant, broad corn leaves with deep emerald green pigmentation, strong stalk turgor, and spotless leaf lamina.",
+            "causes": "Adequate moisture, full sun, balanced N-P-K nutrition, and healthy root development.",
+            "symptoms": [
+                "Uniform rich dark green foliage with clean arching leaf blades",
+                "Sturdy, thick stalk with strong prop root anchoring",
+                "Full, healthy tassel and silk emergence without discoloration"
+            ],
+            "organic_remedies": [
+                "Side-dress with compost or organic manure during knee-high stage",
+                "Maintain consistent root-zone soil moisture"
+            ],
+            "chemical_treatments": [
+                "No fungicide required"
+            ],
+            "prevention": [
+                "Soil testing and balanced nitrogen application",
+                "Ensure minimum 8 hours of full direct sunlight daily"
+            ]
+        }
+    },
+    "grape": {
+        "Black Rot": {
+            "scientific_name": "Guignardia bidwellii",
+            "pathogen": "Fungus (Guignardia bidwellii)",
+            "severity": "Severe",
+            "is_healthy": False,
+            "description": "Destructive fungal disease affecting all green parts of the grapevine, turning berries into hard, shriveled black mummies.",
+            "causes": "Warm and rainy weather (21-32°C), splashing rain dispersing spores from overwintered mummified grapes.",
+            "symptoms": [
+                "Small circular reddish-brown leaf spots with dark margins and tiny black specks (pycnidia)",
+                "Elongated black lesions on young canes, tendrils, and leaf petioles",
+                "Infected grape berries turning soft, rotting, and shriveling into hard, wrinkled black mummies"
+            ],
+            "organic_remedies": [
+                "Remove and destroy all mummified berries from vines and ground during winter pruning",
+                "Apply liquid copper or sulfur sprays beginning at early bud swell",
+                "Open vine canopy through shoot positioning and leaf pulling to maximize sun and airflow"
+            ],
+            "chemical_treatments": [
+                "Mancozeb 75 WP (2g/L) or Captan 50 WP (2.5g/L) from bud break to bloom",
+                "Myclobutanil 10 WP (1g/L) or Kresoxim-methyl 44.3 SC (0.5ml/L)",
+                "Azoxystrobin + Difenoconazole (1ml/L) for protective and curative action"
+            ],
+            "prevention": [
+                "Plant black rot-resistant grape cultivars where feasible",
+                "Prune vines to open trellis systems (e.g. VSP) for fast foliage drying",
+                "Mow orchard floor regularly to reduce relative humidity beneath canopy"
+            ]
+        },
+        "Esca (Black Measles)": {
+            "scientific_name": "Phaeomoniella chlamydospora & Phaeoacremonium aleophilum",
+            "pathogen": "Fungus Complex (Esca / Black Measles)",
+            "severity": "Severe",
+            "is_healthy": False,
+            "description": "Complex grapevine wood disease causing distinctive 'tiger-stripe' leaf necrosis, dark spotted berries (measles), and vine dieback.",
+            "causes": "Wound infection during pruning, fungal colonization of woody vascular tissues, summer heat stress.",
+            "symptoms": [
+                "'Tiger-stripe' chlorotic and necrotic banding between leaf veins",
+                "Small dark purple to brown speckles ('measles') on grape berry skins",
+                "Sudden summer apoplexy (rapid vine wilting and leaf collapse within days)"
+            ],
+            "organic_remedies": [
+                "Paint or seal large pruning wounds immediately with pruning sealant or bio-pastes (Trichoderma)",
+                "Prune during late dry winter weather to reduce spore entry into fresh cuts",
+                "Carefully cut out infected vine arms below internal wood discoloration"
+            ],
+            "chemical_treatments": [
+                "Apply wound protectant fungicides containing pyraclostrobin or tebuconazole immediately post-pruning",
+                "Foliar phosphite and systemic nutrient supplements to boost vine defense mechanisms"
+            ],
+            "prevention": [
+                "Disinfect pruning shears regularly with 70% ethanol between vines",
+                "Avoid excessive water and fertilizer stress during fruit set",
+                "Purchase certified clean, virus/disease-free nursery rootstocks"
+            ]
+        },
+        "Leaf Blight": {
+            "scientific_name": "Pseudocercospora vitis",
+            "pathogen": "Fungus (Pseudocercospora vitis / Isariopsis clavispora)",
+            "severity": "Moderate",
+            "is_healthy": False,
+            "description": "Late-season fungal foliar disease causing angular dark brown to black leaf lesions with a yellow halo, leading to premature defoliation.",
+            "causes": "High humidity, warm temperatures, poor air circulation within dense overgrown canopies.",
+            "symptoms": [
+                "Angular to irregular dark brown lesions with yellow chlorotic halos on older leaves",
+                "Velvety olive-brown fungal growth on the underside of leaf lesions during damp periods",
+                "Severe leaf yellowing, browning, and premature leaf drop exposing clusters to sunburn"
+            ],
+            "organic_remedies": [
+                "Rake and compost or destroy fallen leaves post-harvest",
+                "Apply copper oxychloride (2.5g/L) or Bordeaux mixture (1%) preventive sprays",
+                "Selective summer canopy thinning to enhance airflow"
+            ],
+            "chemical_treatments": [
+                "Mancozeb 75 WP (2g/L) or Chlorothalonil 75 WP (2g/L)",
+                "Carbendazim 50 WP (1g/L) or Tebuconazole (1ml/L)",
+                "Pyraclostrobin (0.5ml/L) applied after post-harvest flushes"
+            ],
+            "prevention": [
+                "Maintain proper vine spacing and row orientation for wind passage",
+                "Apply balanced organic potassium to harden leaf cuticle",
+                "Avoid overhead sprinkler systems"
+            ]
+        },
+        "Healthy": {
+            "scientific_name": "Vitis vinifera (Healthy)",
+            "pathogen": "None (Optimal Health)",
+            "severity": "None",
+            "is_healthy": True,
+            "description": "Lush, well-structured grapevines with vibrant green palmate leaves, clean canes, and flourishing grape clusters.",
+            "causes": "Balanced canopy management, adequate sunshine, well-drained soil, and disciplined pruning.",
+            "symptoms": [
+                "Glossy, emerald-green leaves with smooth lobes and intact margins",
+                "Clean brown woody canes with vigorous green shoot tips",
+                "Tight, uniform berry clusters without spots, powdery coating, or rot"
+            ],
+            "organic_remedies": [
+                "Apply organic compost mulch around grapevine base",
+                "Continue seasonal shoot positioning and suckering"
+            ],
+            "chemical_treatments": [
+                "No fungicide required"
+            ],
+            "prevention": [
+                "Maintain open canopy architecture for direct sunlight on fruit zone",
+                "Regular soil pH and micronutrient monitoring"
+            ]
+        }
     }
 }
 

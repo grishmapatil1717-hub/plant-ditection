@@ -22,8 +22,21 @@ def get_mock_prediction(plant_id: str, image_hint: str = "") -> Dict[str, Any]:
         selected_disease = "Apple Scab" if "Apple Scab" in disease_classes else disease_classes[0]
     elif "black_rot" in hint_lower or "black rot" in hint_lower:
         selected_disease = "Black Rot" if "Black Rot" in disease_classes else disease_classes[0]
-    elif "rust" in hint_lower:
-        selected_disease = "Cedar Apple Rust" if "Cedar Apple Rust" in disease_classes else disease_classes[0]
+    elif "cedar" in hint_lower or "rust" in hint_lower:
+        if "Common Rust" in disease_classes:
+            selected_disease = "Common Rust"
+        elif "Cedar Apple Rust" in disease_classes:
+            selected_disease = "Cedar Apple Rust"
+        else:
+            selected_disease = disease_classes[0]
+    elif "cercospora" in hint_lower or "gray" in hint_lower:
+        selected_disease = "Cercospora Leaf Spot" if "Cercospora Leaf Spot" in disease_classes else disease_classes[0]
+    elif "northern" in hint_lower:
+        selected_disease = "Northern Leaf Blight" if "Northern Leaf Blight" in disease_classes else disease_classes[0]
+    elif "esca" in hint_lower or "measles" in hint_lower:
+        selected_disease = "Esca (Black Measles)" if "Esca (Black Measles)" in disease_classes else disease_classes[0]
+    elif "leaf_blight" in hint_lower or "leaf blight" in hint_lower:
+        selected_disease = "Leaf Blight" if "Leaf Blight" in disease_classes else disease_classes[0]
     elif "septoria" in hint_lower:
         selected_disease = "Septoria Leaf Spot" if "Septoria Leaf Spot" in disease_classes else disease_classes[0]
     else:

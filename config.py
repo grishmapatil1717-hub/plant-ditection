@@ -70,6 +70,36 @@ PLANTS = {
             "Apple Scab",
             "Cedar Apple Rust"
         ]
+    },
+
+    "corn": {
+        "name": "Corn (Maize)",
+        "scientific_name": "Zea mays",
+        "icon": "🌽",
+        "status": "Active",
+        "model_file": "corn_mobilenetv2_best.keras",
+        "drive_file_id": "1uSzAQEkteWVxiJxUwyYTTXbEHwjeqORU",
+        "classes": [
+            "Cercospora Leaf Spot",
+            "Common Rust",
+            "Northern Leaf Blight",
+            "Healthy"
+        ]
+    },
+
+    "grape": {
+        "name": "Grape",
+        "scientific_name": "Vitis vinifera",
+        "icon": "🍇",
+        "status": "Active",
+        "model_file": "grape_cnn_best.keras",
+        "drive_file_id": "1gyfMFevQ9O2D3s6BjGHoA1Lp9tB603Fg",
+        "classes": [
+            "Black Rot",
+            "Esca (Black Measles)",
+            "Leaf Blight",
+            "Healthy"
+        ]
     }
 }
 

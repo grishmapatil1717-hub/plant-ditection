@@ -70,12 +70,20 @@ def get_or_load_model(plant_key: str):
     if model_path.exists() and model_path.stat().st_size > 1024:
         try:
             import tensorflow as tf
-            model = tf.keras.models.load_model(str(model_path))
+            # Load with compile=False for fast, resilient inference
+            model = tf.keras.models.load_model(str(model_path), compile=False)
             _LOADED_MODELS[plant_key] = model
             return model
         except Exception as e:
-            print(f"Error loading model {plant_key}: {e}")
-            return None
+            print(f"Error loading model {plant_key} with compile=False: {e}")
+            try:
+                import tensorflow as tf
+                model = tf.keras.models.load_model(str(model_path))
+                _LOADED_MODELS[plant_key] = model
+                return model
+            except Exception as e2:
+                print(f"Fallback error loading model {plant_key}: {e2}")
+                return None
 
     return None
 

@@ -24,8 +24,8 @@ SUPABASE_KEY = os.getenv("SUPABASE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e
 IMAGE_TARGET_SIZE = (224, 224)
 IMAGE_CHANNELS = 3
 
-# Inference Switch
-USE_MOCK = os.getenv("USE_MOCK", "True").lower() in ("true", "1", "yes")
+# Inference Switch: Default False for Live Deep Learning Weights
+USE_MOCK = os.getenv("USE_MOCK", "False").lower() in ("true", "1", "yes")
 
 
 # Plant and Model Registry

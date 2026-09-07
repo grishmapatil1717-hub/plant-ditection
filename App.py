@@ -40,7 +40,7 @@ from models.apple_model import predict_apple
 
 # 1. Page Configuration
 st.set_page_config(
-    page_title="PlantVision AI — Plant Pathology System",
+    page_title="Plant Detection AI — Crop Pathology System",
     page_icon="🌿",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -192,7 +192,7 @@ if not st.session_state.dark_mode:
 if not auth.is_authenticated():
     st.markdown("""
         <div class="main-header">
-            <h1>🌿 PlantVision AI</h1>
+            <h1>🌿 Plant Detection AI</h1>
             <p>Computer Vision-Powered Plant Disease Detection & Treatment System</p>
         </div>
     """, unsafe_allow_html=True)
@@ -207,7 +207,7 @@ if not auth.is_authenticated():
             st.caption("Enter your credentials to access your crop diagnostic scanner and personal scan logs.")
             
             with st.form("login_form"):
-                login_username = st.text_input("Username or Email", placeholder="e.g. farmer_john or john@plantvision.ai")
+                login_username = st.text_input("Username or Email", placeholder="e.g. farmer_john or john@plantdetection.ai")
                 login_password = st.text_input("Password", type="password", placeholder="••••••••")
                 submit_login = st.form_submit_button("🚀 Sign In", type="primary", use_container_width=True)
 

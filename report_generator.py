@@ -9,7 +9,7 @@ class PlantVisionPDF(FPDF):
         self.set_x(10)
         self.set_font("Helvetica", "B", 18)
         self.set_text_color(5, 150, 105)
-        self.cell(self.epw, 10, "PlantVision AI - Plant Pathology Report", ln=True, align="L")
+        self.cell(self.epw, 10, "Plant Detection AI - Crop Pathology Report", ln=True, align="L")
         self.set_x(10)
         self.set_font("Helvetica", "I", 9)
         self.set_text_color(100, 116, 139)
@@ -25,7 +25,7 @@ class PlantVisionPDF(FPDF):
         self.set_x(10)
         self.set_font("Helvetica", "I", 8)
         self.set_text_color(148, 163, 184)
-        self.cell(self.epw, 10, f"PlantVision AI Report | Page {self.page_no()}", align="C")
+        self.cell(self.epw, 10, f"Plant Detection AI Report | Page {self.page_no()}", align="C")
 
 def _clean_str(text: Any) -> str:
     """Safely encodes strings to ASCII/latin-1 compatible characters for FPDF."""

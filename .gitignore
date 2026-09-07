@@ -1,0 +1,36 @@
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Local databases & user uploads
+*.db
+*.sqlite3
+uploads/*
+!uploads/.gitkeep
+
+# Deep learning weights (synced via Google Drive)
+models/*.keras
+models/*.h5
+models/*.weights.h5
+
+# Local environment variables
+.env
+.env.local
+
+# Logs
+logs/
+*.log
+
+# OS & Editor
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+

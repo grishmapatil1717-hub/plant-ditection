@@ -15,11 +15,6 @@ ENV/
 uploads/*
 !uploads/.gitkeep
 
-# Deep learning weights (synced via Google Drive)
-models/*.keras
-models/*.h5
-models/*.weights.h5
-
 # Local environment variables
 .env
 .env.local

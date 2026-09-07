@@ -92,3 +92,20 @@ The application is deployed directly on **Streamlit Community Cloud**:
 - **Main Module:** `App.py`
 - **Python Version:** 3.11+
 - **Live URL:** [https://plant-ditection-ycvcyfawmtyacitg5q3uyq.streamlit.app/](https://plant-ditection-ycvcyfawmtyacitg5q3uyq.streamlit.app/)
+
+---
+
+## 👥 Authors & Project Credits
+
+This project was developed by **Third Year (Semester 5)** Computer Engineering students as an academic engineering mini-project:
+
+| Contributor | GitHub Profile | Role |
+| :--- | :--- | :--- |
+| 👨‍💻 **Soham Morye** | [@moryesoham4-SR](https://github.com/moryesoham4-SR) | Lead Developer & Machine Learning Engineer |
+| 👩‍💻 **Grishma Patil** | [@grishmapatil1717-hub](https://github.com/grishmapatil1717-hub) | Lead Developer & Research / UI Design |
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE) — see the LICENSE file for details.

@@ -97,7 +97,7 @@ The application is deployed directly on **Streamlit Community Cloud**:
 
 ## 👥 Authors & Project Credits
 
-This project was developed by **Third Year (Semester 5)** Computer Engineering students as an academic engineering mini-project:
+This project was developed by **Third Year (Semester 5) B.Sc. Data Science** students as an academic Data Science mini-project:
 
 | Contributor | GitHub Profile | Role |
 | :--- | :--- | :--- |

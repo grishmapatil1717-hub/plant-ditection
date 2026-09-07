@@ -1,55 +1,94 @@
-﻿# 🌿 PlantVision AI — Vercel Web Application
+# 🌿 Plant Detection AI — Crop Pathology & Disease Diagnosis System
 
-**PlantVision AI** is a production-grade Computer Vision web application for plant disease detection across **Potato, Tomato, and Apple** crops, optimized specifically for **Vercel** deployment.
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://plant-ditection-ycvcyfawmtyacitg5q3uyq.streamlit.app/)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-brightgreen.svg)](https://www.python.org/)
+
+**Plant Detection AI** is a production-grade Deep Learning web application for plant disease detection and treatment recommendations across **Potato, Tomato, Apple, Corn, and Grape** crops.
+
+🌐 **Live Streamlit Web Application:**  
+👉 **[https://plant-ditection-ycvcyfawmtyacitg5q3uyq.streamlit.app/](https://plant-ditection-ycvcyfawmtyacitg5q3uyq.streamlit.app/)**
 
 ---
 
 ## 🚀 Key Features
 
-1. **User Authentication:** Sign in, register, and guest testing with persistent browser sessions.
-2. **Plant Selector:** Supports **Potato, Tomato, and Apple** (+ roadmap badges for Corn and Grape).
-3. **Canvas Preprocessor:** Automatically normalizes any uploaded leaf image to exact **224 × 224 × 3 RGB** tensor specifications.
-4. **1-Click Test Samples:** Built-in instant test samples for **Early Blight, Late Blight, Apple Scab, Black Rot, and Healthy Foliage**.
-5. **AI Diagnosis & Prescription Card:**
-   * Severity tags (🟢 Healthy, 🟡 Moderate, 🔴 High / Critical).
-   * Confidence percentage gauge.
-   * Treatment tabs: **🌿 Organic Remedies**, **🧪 Chemical Fungicides & Dosages**, and **🛡️ Preventative Guidelines**.
-   * Multi-class probability distribution bars.
-6. **Personal Scan History:** Automatically logs all scans to user profile with search and filtering.
-7. **Analytics Dashboard:** Visual metrics for total scans, healthy ratio, crop volume breakdown, and disease frequency rankings.
-8. **Plant Pathology Encyclopedia:** Complete searchable offline guide for all crops.
-9. **Printable / PDF Pathology Report:** 1-click diagnostic report generator.
+1. **🌱 Multi-Crop Deep Learning Diagnostics:**
+   - 🥔 **Potato (*Solanum tuberosum*):** Early Blight, Late Blight, Healthy Foliage.
+   - 🍅 **Tomato (*Solanum lycopersicum*):** Early Blight, Late Blight, Septoria Leaf Spot, Healthy Foliage.
+   - 🍎 **Apple (*Malus domestica*):** Apple Scab, Cedar Apple Rust, Healthy Foliage.
+   - 🌽 **Corn / Maize (*Zea mays*):** Common Rust, Northern Leaf Blight, Cercospora (Gray) Leaf Spot, Healthy Foliage.
+   - 🍇 **Grape (*Vitis vinifera*):** Black Rot, Esca (Black Measles), Leaf Blight, Healthy Foliage.
+
+2. **📷 Flexible Input Modes & Leaf Validation:**
+   - Upload image files (JPG, PNG, WebP, BMP, TIFF) or capture live photos with the built-in camera (`st.camera_input`).
+   - Anti-spoofing leaf verification ensuring non-foliage (faces, objects, plain backgrounds) is rejected before inference.
+   - 1-click test samples pre-configured for every crop condition.
+
+3. **💡 Comprehensive Agronomic Prescriptions:**
+   - Severity indicators (🟢 Healthy, 🟡 Moderate, 🔴 Severe / Critical).
+   - **🌿 Organic Remedies** (Neem extract, bio-fungicides, canopy pruning).
+   - **🧪 Chemical Fungicides** (Precise active ingredients and dilution dosages).
+   - **🛡️ Preventative Measures** (Crop rotation, drip irrigation, resistant cultivars).
+
+4. **🗄️ Supabase Cloud Database & Storage:**
+   - Real-time cloud persistence for user authentication, scan history, and high-resolution leaf image storage.
+   - Automatic offline SQLite fallback when offline.
+
+5. **📊 Analytics & Performance Curves:**
+   - Scan volume breakdowns, health ratios, and disease frequency rankings.
+   - Epoch-by-epoch training/validation accuracy and loss curves for each deep learning architecture.
+
+6. **📄 PDF Diagnostic Health Reports:**
+   - 1-click generation of professional agronomic reports formatted with timestamps, symptoms, and prescriptions.
+
+7. **🎨 Modern Theme Engine:**
+   - Seamless toggle between Dark Slate and Light Clean UI themes.
 
 ---
 
-## ⚡ 1-Click Vercel Deployment
+## 🛠️ Tech Stack
 
-### Method 1: Deploy via GitHub (Recommended)
-1. Push this directory (plantvision-ai-web) to a new GitHub repository:
-   `ash
-   git init
-   git add .
-   git commit -m Initial commit of PlantVision AI Web
-   git branch -M main
-   git remote add origin https://github.com/your-username/plantvision-ai-web.git
-   git push -u origin main
-   `
-2. Go to [vercel.com/new](https://vercel.com/new).
-3. Import your plantvision-ai-web repository.
-4. Framework Preset will be automatically detected as **Vite**.
-5. Click **Deploy** — your app is live on a global CDN in under 1 minute!
-
-### Method 2: Deploy with Vercel CLI
-`ash
-npm i -g vercel
-vercel
-`
+- **Frontend & Web Framework:** [Streamlit](https://streamlit.io/)
+- **Deep Learning & Computer Vision:** TensorFlow, Keras, NumPy, Pillow
+- **Cloud Database & Storage:** Supabase (PostgreSQL + Object Storage)
+- **Data Visualizations:** Plotly Express
+- **Report Generation:** FPDF2
 
 ---
 
-## ☁️ Connecting with Google Drive / Python Backend
+## 💻 Local Installation & Setup
 
-1. When running on Vercel, the app defaults to the high-accuracy mock inference engine.
-2. Click the ⚙️ **Settings** icon in the navbar.
-3. Switch off mock mode and enter your backend URL (e.g. your FastAPI server, Render backend, or Colab Ngrok tunnel).
-4. The frontend will automatically route the preprocessed 224x224 RGB image to your server at ${API_URL}/predict!
+### 1. Clone the Repository
+```bash
+git clone https://github.com/grishmapatil1717-hub/plant-ditection.git
+cd plant-ditection
+```
+
+### 2. Create Virtual Environment & Install Dependencies
+```bash
+python -m venv venv
+# On Windows:
+venv\Scripts\activate
+# On Linux / macOS:
+source venv/bin/activate
+
+pip install -r requirements.txt
+```
+
+### 3. Run the Streamlit Application
+```bash
+streamlit run App.py
+```
+
+Open your browser and navigate to `http://localhost:8501`.
+
+---
+
+## ☁️ Streamlit Community Cloud Deployment
+
+The application is deployed directly on **Streamlit Community Cloud**:
+- **Repository:** `grishmapatil1717-hub/plant-ditection`
+- **Main Module:** `App.py`
+- **Python Version:** 3.11+
+- **Live URL:** [https://plant-ditection-ycvcyfawmtyacitg5q3uyq.streamlit.app/](https://plant-ditection-ycvcyfawmtyacitg5q3uyq.streamlit.app/)
